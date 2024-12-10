@@ -77,16 +77,16 @@ if (empty($X_train) || empty($y_train)) {
     die("Erreur : Aucune donnée d'entraînement valide n'a été chargée.\n");
 }
 echo "Nombre total d'échantillons d'entraînement : " . count($X_train) . "\n";
-print_r(array_count_values($y_train)); // Vérifier la distribution des classes
+print_r(array_count_values($y_train));
 
-// Initialiser et entraîner un DecisionTree
+// j'init et fais le test pr l'arbre
 echo "Étape 2 : Initialisation et entraînement du modèle DecisionTree...\n";
-$tree = new DecisionTree($maxDepth = 15, $minSamplesSplit = 10); // Ajuster la profondeur et les splits pour un meilleur apprentissage
+$tree = new DecisionTree($maxDepth = 15, $minSamplesSplit = 10); // settings la profondeur à 10
 echo "Début de l'entraînement...\n";
 $tree->train($X_train, $y_train);
 echo "Entraînement terminé pour DecisionTree.\n";
 
-// Sauvegarder le modèle (facultatif)
+// Save le modèle pr le test après
 echo "Étape 3 : Sauvegarde du modèle...\n";
 file_put_contents('decision_tree_model.json', serialize($tree));
 echo "Modèle sauvegardé dans 'decision_tree_model.json'.\n";

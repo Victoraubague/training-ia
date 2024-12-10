@@ -1,7 +1,7 @@
 <?php
-ini_set('memory_limit', '-1'); // Pas de limite mémoire
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
+ini_set('memory_limit', '-1'); // je vire les limites de mémoire
+ini_set('display_errors', '1'); // je vire les limites de mémoire
+ini_set('display_startup_errors', '1'); // je vire les limites de mémoire
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 
 require 'vendor/autoload.php';
@@ -74,7 +74,7 @@ if (empty($X_test) || empty($y_test)) {
     die("Erreur : Aucune donnée de test valide n'a été chargée.\n");
 }
 echo "Nombre total d'échantillons de test : " . count($X_test) . "\n";
-print_r(array_count_values($y_test)); // Vérifier la distribution des classes
+print_r(array_count_values($y_test));
 
 // Charger le modèle sauvegardé
 echo "Étape 2 : Chargement du modèle DecisionTree...\n";
@@ -84,12 +84,12 @@ if (!file_exists('decision_tree_model.json')) {
 $tree = unserialize(file_get_contents('decision_tree_model.json'));
 echo "Modèle chargé avec succès.\n";
 
-// Prédire les labels pour les données de test
+// je fais les labels genre 0 - 1 - 2 etc
 echo "Étape 3 : Prédiction des labels...\n";
 $predictions = $tree->predict($X_test);
 echo "Prédiction terminée.\n";
 
-// Calculer la précision
+// ici je calcule la précision
 echo "Étape 4 : Calcul de la précision...\n";
 $totalSamples = count($y_test);
 $correct = 0;
