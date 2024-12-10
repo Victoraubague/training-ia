@@ -1,0 +1,7 @@
+{
+  "require": {
+    "rubix/ml": "^2.5",
+    "php-ai/php-ml": "^0.10.0",
+    "ext-gd": "*"
+  }
+}

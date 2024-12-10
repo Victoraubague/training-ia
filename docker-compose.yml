@@ -1,0 +1,8 @@
+services:
+  php:
+    mem_limit: 4g
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    tty: true
